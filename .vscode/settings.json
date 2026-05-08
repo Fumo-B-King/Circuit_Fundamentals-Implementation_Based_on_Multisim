@@ -16,5 +16,6 @@
             "command": "extension.execute",
             "priority": 4
         }
-    ]
+    ],
+    "latex-workshop.latex.outDir": "%DIR%/build"
 }

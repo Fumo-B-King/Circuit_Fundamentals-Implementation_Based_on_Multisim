@@ -1,0 +1,61 @@
+\newcommand{\figImpulseFuncGraph}{
+    \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+    % 坐标轴
+    \draw[->] (-3,0) -- (3,0) node[right] {$t$};
+    \draw[->] (0,-0.5) -- (0,2) node[above] {$\delta(t)$};
+    % 冲激箭头
+    \draw[->, thick, red] (0,0) -- (0,1.5) node[above right] {$\infty$};
+    % 原点标记
+    \fill (0,0) circle (2pt);
+    \node[below left] at (0,0) {$0$};
+    % 积分面积示意
+    \draw[blue, dashed] (-0.3,0) -- (-0.3,0.5) -- (0.3,0.5) -- (0.3,0);
+    \node[blue] at (0,0.7) {$1$};
+    \end{tikzpicture}
+    \caption{冲激信号函数图像}
+    \label{fig:ImpulseFuncGraph}
+    \end{figure}
+}
+
+
+\newcommand{\figResistanceUIAnalysis}{
+    \begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+
+    \draw (0,0) to [short, o-] (2,0)
+                to[R, l = $R$] (4,0)
+                to [short, -o] (6,0);
+    \node[below] at (0,0) {$+$};
+    \node[below] at (6,0) {$-$};
+    \node[below] at (3,-1) {$U$};
+    
+    \draw[->] (2, 1) -- (4, 1);
+    \node[above] at (3,1) {$I$};
+
+    \end{circuitikz}
+    \caption{电阻电路}
+    \label{fig:ResistanceUIAnalysis}
+    \end{figure}
+}
+
+
+\newcommand{\figResistanceUIAnalysisFancImage}{
+    \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % 坐标轴
+        \draw[->] (-0.5,0) -- (5,0) node[right] {$u$};
+        \draw[->] (0,-0.5) -- (0,4) node[above] {$i$};
+        % 绘制电阻UI曲线
+        \draw[domain=0:3, smooth, thick] plot (\x,{0.8*\x});
+        % 原点标记
+        \fill (0,0) circle (2pt);
+        \node[below left] at (0,0) {$O$};
+    \end{tikzpicture}
+    \caption{电阻UI曲线}
+    \label{fig:ResistanceUIAnalysisFancImage}
+    \end{figure}
+}

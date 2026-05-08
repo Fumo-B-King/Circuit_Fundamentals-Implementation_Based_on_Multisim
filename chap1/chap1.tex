@@ -1,51 +1,6 @@
-\documentclass{article}
-
-\usepackage{ctex}
-\usepackage{geometry}
-\geometry{a4paper, scale=0.85}
-\usepackage{graphicx} % 插入图片
-\graphicspath{{D:/文章中枢/课程讲义/模拟电子技术-基于Multisim实现/Image}} % 图片路径
-\usepackage{subcaption} 
-\usepackage{amsmath} % 数学公式
-\usepackage{amssymb} % 数学符号
-\usepackage{fancyhdr} % 页眉页脚
-\usepackage{circuitikz} % 电路图
-\circuitikzset{european resistors}
-\usepackage{tikz} % 绘图
-\usepackage{float} % 图片浮动
-\usepackage{listings} % 代码高亮
-\usepackage{color} % 颜色
-\usepackage{hyperref} % 超链接
-\usepackage{siunitx} % SI单位 
-\usepackage{comment}
-\usepackage{caption} % 图片标题
-\captionsetup{labelsep=period, format=hang}
-\numberwithin{figure}{subsection} % 
-%\usepackage{minted}
+\input{chap1/figures1}
 
 
-
-
-
-\begin{document}
-
-
-\begin{titlepage}
-    \centering
-    {\Huge 电路基础讲义 \\[1cm]}
-    {\Large 基于 Multisim 实现 \\[2cm]}
-    {\Large 笛芦-Fumo\_B\_King \\[1cm]}
-    {\large \today}
-\end{titlepage}
-
-
-\tableofcontents        % 生成目录
-\pagenumbering{roman} 
-\setcounter{page}{1}
-\newpage                % 换页
-
-\pagenumbering{arabic}
-\setcounter{page}{1}
 \section{电路与数学模型}
 
     在讲解我们的电路基础之前，我们必须要提到相关的数学模型，这并非像我们在中学阶段
@@ -107,23 +62,8 @@
     \right.
     $$
 
-    \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}[scale=1.5]
-    % 坐标轴
-    \draw[->] (-3,0) -- (3,0) node[right] {$t$};
-    \draw[->] (0,-0.5) -- (0,2) node[above] {$\delta(t)$};
-    % 冲激箭头
-    \draw[->, thick, red] (0,0) -- (0,1.5) node[above right] {$\infty$};
-    % 原点标记
-    \fill (0,0) circle (2pt);
-    \node[below left] at (0,0) {$0$};
-    % 积分面积示意
-    \draw[blue, dashed] (-0.3,0) -- (-0.3,0.5) -- (0.3,0.5) -- (0.3,0);
-    \node[blue] at (0,0.7) {$1$};
-    \end{tikzpicture}
-    \caption{冲激信号函数图像}
-    \end{figure}
+    \figImpulseFuncGraph
+
     如果读者学习过相关内容应该知道这是一个信号与系统中的一个常见信号-冲激信号。
     这个函数显然是不可能存在的，这是一个理想化的模型，现实中冲激信号更多类似于
     量子力学中的$\delta$函数。当读者面对这种以函数出现的信号，比如电压电流时，可能会
@@ -156,23 +96,17 @@
     个简单的线性函数了。所以我们要求的纯电阻电路是线性的要求就是电阻的值不能改变。
 
     让我们研究一下纯电阻的系统：
-    \begin{figure}[htbp]
-    \centering
-    \begin{circuitikz}
+    \figResistanceUIAnalysis
+    现在我们可以发现电阻两端电压和流经电阻的电流，在线性关系下，他们的电压和电流的曲线我们
+    称作为元件的UI曲线，这是我们分析二端元件的一个切入点，这可以反应这个二段元件(也可以
+    视作为一个二端系统)的电流和电压输入时呈现什么样的关系。
+    \figResistanceUIAnalysisFancImage
+    我们早已知道这是一个线性关系了，所以电阻是作为最简单的元件作为出现，此时在后续的
+    研究中，读者需要意识到电阻两端电压与电流呈现正比关系。但是需要注意到的是，此结果
+    仅在纯电阻或者说是线性系统中才成立。
 
-    \draw (0,0) to [short, o-] (2,0)
-                to[R, l = $R$] (4,0)
-                to [short, -o] (6,0);
-    \node[below] at (0,0) {$+$};
-    \node[below] at (6,0) {$-$};
-    \node[below] at (3,-1) {$U$};
-    
-    \draw[->] (2, 1) -- (4, 1);
-    \node[above] at (3,1) {$I$};
 
-    \end{circuitikz}
-    \caption{电阻电路}
-    \end{figure}
+
 
 
 
@@ -188,6 +122,3 @@
 
     \newpage
     \subsection{习题与详解}
-
-
-\end{document}
